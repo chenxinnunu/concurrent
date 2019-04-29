@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="concurrent" />
+        <module name="demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client-api" target="1.8" />
+      <module name="concurrent" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="demo1" target="1.8" />
+      <module name="haipay-api" target="1.8" />
+      <module name="jedis" target="1.8" />
+      <module name="merchant-backend" target="1.8" />
+      <module name="merchant-backend-application" target="1.8" />
+      <module name="merchant-backend-card" target="1.8" />
+      <module name="merchant-backend-common" target="1.8" />
+      <module name="merchant-backend-config" target="1.8" />
+      <module name="merchant-backend-dao" target="1.7" />
+      <module name="merchant-backend-domain" target="1.8" />
+      <module name="merchant-backend-log" target="1.8" />
+      <module name="merchant-backend-model" target="1.7" />
+      <module name="merchant-backend-orderonline" target="1.8" />
+      <module name="merchant-backend-product" target="1.8" />
+      <module name="merchant-backend-sal" target="1.7" />
+      <module name="merchant-backend-service" target="1.7" />
+      <module name="merchant-backend-store" target="1.8" />
+      <module name="merchant-backend-user" target="1.8" />
+      <module name="merchant-backend-web" target="1.8" />
+      <module name="merchant-backend-wxPublic" target="1.8" />
+      <module name="qpay-api" target="1.8" />
+      <module name="qrcode-pay-callback" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

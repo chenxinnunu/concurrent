@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="qrcode-pay-callback:war">
+    <output-path>$PROJECT_DIR$/merchant-backend/qrcode-pay-callback/target</output-path>
+    <root id="archive" name="qrcode-pay-callback-2.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="qrcode-pay-callback:war exploded" />
+    </root>
+  </artifact>
+</component>

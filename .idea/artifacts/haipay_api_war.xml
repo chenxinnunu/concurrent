@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="haipay-api:war">
+    <output-path>$PROJECT_DIR$/merchant-backend/haipay-api/target</output-path>
+    <root id="archive" name="haipay-api-2.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="haipay-api:war exploded" />
+    </root>
+  </artifact>
+</component>
