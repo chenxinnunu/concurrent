@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="merchant-backend-web:war">
-    <output-path>$PROJECT_DIR$/merchant-backend/merchant-backend-web/target</output-path>
-    <root id="archive" name="merchant-backend.war">
-      <element id="artifact" artifact-name="merchant-backend-web:war exploded" />
-    </root>
-  </artifact>
-</component>
