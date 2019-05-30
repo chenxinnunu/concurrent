@@ -1,3 +1,6 @@
 .idea
-concurrent/concurrent.iml
+.gitignore
+demo/.idea
 demo/demo.iml
+concurrent/concurrent.iml
+
