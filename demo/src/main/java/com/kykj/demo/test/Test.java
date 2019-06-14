@@ -11,9 +11,23 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        Work w = new Work();
+/*        Work w = new Work();
         w.setName(null);
         w.setAge(null);
-        System.out.println(w.getAge());
+        System.out.println(w.getAge());*/
+        System.out.println(get());
+
+    }
+
+    private static int get() {
+        int a = 1;
+        try {
+            return a;
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            a++;
+        }
+        return a;
     }
 }
