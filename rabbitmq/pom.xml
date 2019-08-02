@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chenxin</groupId>
+    <artifactId>rabbitmq</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- jdk版本 -->
+        <jdk_version>1.8</jdk_version>
+
+        <!-- Apache Common的jar -->
+        <commons_lang3_version>3.8.1</commons_lang3_version>
+        <commons_pool2_version>2.4.2</commons_pool2_version>
+        <commons_codec_version>1.10</commons_codec_version>
+        <commons_beanutils_version>1.9.3</commons_beanutils_version>
+        <commons_httpclient_version>3.1</commons_httpclient_version>
+        <commons_io_version>2.6</commons_io_version>
+        <commons_fileupload_version>1.3.3</commons_fileupload_version>
+        <commons_net_version>3.6</commons_net_version>
+        <commons_text_version>1.6</commons_text_version>
+        <commons_compress_version>1.17</commons_compress_version>
+
+        <json_version>20160212</json_version>
+        <jsoup_version>1.8.3</jsoup_version>
+
+        <!-- slf4j日志打印 -->
+        <slf4j_version>1.7.25</slf4j_version>
+        <log4j_version>2.5</log4j_version>
+        <log4j2_disruptor_version>3.3.6</log4j2_disruptor_version>
+
+
+        <httpclient_version>4.5.2</httpclient_version>
+        <poi_version>3.15</poi_version>
+        <netty_socketio_version>1.7.12</netty_socketio_version>
+        <lombok_version>1.16.6</lombok_version>
+        <aspectjweaver_version>1.8.9</aspectjweaver_version>
+        <dom4j_version>1.6.1</dom4j_version>
+
+        <!-- mysql数据库连接 -->
+        <mysql_connector_version>5.1.39</mysql_connector_version>
+        <druid_version>1.1.8</druid_version>
+
+        <!-- ORM框架MyBatis -->
+        <mybatis_version>3.2.8</mybatis_version>
+
+
+        <!-- Spring框架 -->
+        <spring_version>4.3.18.RELEASE</spring_version>
+        <spring-mybatis_version>1.3.2</spring-mybatis_version>
+
+        <itextpdf_version>5.5.10</itextpdf_version>
+        <itext-asian_version>5.2.0</itext-asian_version>
+
+        <!-- shiro权限控制 -->
+        <shiro_version>1.3.2</shiro_version>
+        <shiroredis_version>2.4.2.1-RELEASE</shiroredis_version>
+
+        <!-- 缓存第三方客户端 -->
+        <jedis_version>2.9.0</jedis_version>
+        <ehcache_version>2.10.3</ehcache_version>
+        <xmemcached_version>1.3.8</xmemcached_version>
+
+
+        <jstl_version>1.2</jstl_version>
+        <fastjson_version>1.2.22</fastjson_version>
+        <fasterxml_version>2.9.6</fasterxml_version>
+        <gson_version>2.8.0</gson_version>
+        <json_lib_version>2.4</json_lib_version>
+
+        <jsch_version>0.1.50</jsch_version>
+
+        <quartz_version>2.3.0</quartz_version>
+        <servlet_version>4.0.1</servlet_version>
+        <junit_version>4.12</junit_version>
+        <ezmorph_version>1.0.6</ezmorph_version>
+        <drools_knowledge_version>6.5.0.Final</drools_knowledge_version>
+        <dashboard_builder_version>6.5.0.Final</dashboard_builder_version>
+        <commons_logging_version>1.2</commons_logging_version>
+        <tomcat_embed_version>8.0.36</tomcat_embed_version>
+        <mail_version>1.6.2</mail_version>
+
+        <!-- javax参数校验 -->
+        <hibernate_validation_version>6.0.10.Final</hibernate_validation_version>
+        <glassfish_el_version>3.0.1-b09</glassfish_el_version>
+
+        <activiti_version>5.18.0</activiti_version>
+
+        <!-- esignE签宝相关 -->
+        <tgtext_version>3.0.0</tgtext_version>
+        <esign_version>2.0.6</esign_version>
+        <bouncycastle_version>1.48</bouncycastle_version>
+        <timevaleutils_version>3.0.6</timevaleutils_version>
+        <zxing_version>3.3.0</zxing_version>
+
+        <!-- Apache HttpClient相关jar -->
+        <httpmime_version>4.5.1</httpmime_version>
+
+        <!-- 汉字转拼音封装 -->
+        <pinyin4j_version>2.5.1</pinyin4j_version>
+        <zip4j_version>1.3.2</zip4j_version>
+
+        <!-- mockito -->
+        <mockito_version>1.9.5</mockito_version>
+        <hamcrest_version>1.3</hamcrest_version>
+
+        <!--dubbo相关 -->
+        <dubbo_version>2.6.2</dubbo_version>
+        <netty_version>4.1.26.Final</netty_version>
+        <zookeeper_version>3.4.12</zookeeper_version>
+        <curator_version>4.0.1</curator_version>
+
+        <!-- fastdfs相关 -->
+        <fastdfs_version>1.27.0.0</fastdfs_version>
+
+        <!--maven插件版本 -->
+        <maven_compiler_version>3.6.2</maven_compiler_version>
+
+        <!-- Google Java扩展jar -->
+        <guava_version>25.0-jre</guava_version>
+
+
+        <!-- rabbitmq消息中间件begin -->
+        <rabbitmq_version>3.5.1</rabbitmq_version>
+        <rabbitmq-spring_version>1.4.6.RELEASE</rabbitmq-spring_version>
+
+        <!-- kafka消息中间件 -->
+        <kafka_version>2.1.0</kafka_version>
+        <kafka-spring_version>2.2.2.RELEASE</kafka-spring_version>
+
+
+    </properties>
+    <dependencies>
+        <!-- jackson报文转换begin -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+            <version>${fasterxml_version}</version>
+        </dependency>
+        <!-- jackson报文转换end -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+        <!-- Spring框架begin -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.0-jre</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Spring框架end -->
+    </dependencies>
+
+
+</project>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		   http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context.xsd  
+           http://www.springframework.org/schema/rabbit 
+           http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+	<!--配置connection-factory，指定连接rabbit server参数 -->
+	<rabbit:connection-factory id="connectionFactory"
+							   addresses="${rabbit.connect.addresses}"
+							   username="${rabbit.connect.username}"
+							   password="${rabbit.connect.password}"
+							   channel-cache-size="${rabbit.connect.channelCacheSize}"
+							   publisher-returns="true" publisher-confirms="true" />
+
+	<!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+	<rabbit:admin connection-factory="connectionFactory" />
+
+	<rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"/>
+
+	<!--定义queue 说明：durable:是否持久化 exclusive: 仅创建者可以使用的私有队列，断开后自动删除 auto_delete:
+		当所有消费客户端连接断开后，是否自动删除队列 -->
+	<rabbit:queue name="TestQueue" durable="true" auto-delete="false" exclusive="false" />
+	
+	<!-- 交换器 -->
+	<rabbit:direct-exchange name="TestExchanger" durable="true">
+		<rabbit:bindings>
+			<rabbit:binding queue="TestQueue" key="TestBinding" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+
+	<bean id="testListener" class="com.chenxin.rabbitmq.TestListener" />
+	<rabbit:listener-container
+		connection-factory="connectionFactory" acknowledge="auto"
+		concurrency="5" prefetch="3" max-concurrency="10"  missing-queues-fatal="false">
+		<rabbit:listener queue-names="TestQueue" ref="testListener" />
+	</rabbit:listener-container>
+	<!--manual 只有服务端收到确认信号，即channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+	确认成功，消息才会移除，确认成功后不管后面是异常还是断开服务消息已经被移除了。
+	如果在确认之前抛出异常，消息不会移除，也不会重试，监听程序会因为异常停止不再处理消息，如果此时断开服务，消息重新回到队列。-->
+	<!--auto 消费者挂掉，待ack的消息回归到队列中。消费者如果抛出异常，消息会不断的被重发，直到处理成功。
+	不会丢失消息，即便服务挂掉，没有处理完成的消息会重回队列，但是异常会让消息不断重试-->
+	<!--none 不使用确认机制，只要消息发送完成会立即在队列移除，无论客户端异常还是断开，只要发送完就移除，不会重发。-->
+
+</beans>
