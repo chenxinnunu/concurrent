@@ -3,4 +3,7 @@
 demo/.idea
 demo/demo.iml
 concurrent/concurrent.iml
+concurrent/target
+*/target
+
 
