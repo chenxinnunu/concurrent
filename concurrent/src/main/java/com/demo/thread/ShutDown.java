@@ -20,14 +20,14 @@ public class ShutDown {
         countThread.start();
         //睡眠一秒，main线程对countThread进行中断，使countThread能够感知中断而结束
         TimeUnit.SECONDS.sleep(1);
-        countThread.isInterrupted();
+        countThread.interrupt();
 
         Runner two = new Runner();
         countThread = new Thread(two, "CountThread");
         countThread.start();
         //睡眠一秒，main线程对Runner two进行取消，使CountThread能够感知on为false而结束
         TimeUnit.SECONDS.sleep(1);
-        two.cancle();
+        two.cancel();
     }
 
     static class Runner implements Runnable {
@@ -43,7 +43,7 @@ public class ShutDown {
             System.out.println("count i = " + i);
         }
 
-        public void cancle() {
+        public void cancel() {
             on = false;
         }
     }
