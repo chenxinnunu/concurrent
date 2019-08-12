@@ -3,7 +3,6 @@ package com.demo.thread;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.SimpleFormatter;
 
 /**
  * @author chenxin
@@ -11,8 +10,8 @@ import java.util.logging.SimpleFormatter;
  * 等待通知机制
  */
 public class WaitNotify {
-    static boolean flag = true;
-    static Object lock = new Object();
+    private static boolean flag = true;
+    private static final Object lock = new Object();
 
     public static void main(String[] args) throws InterruptedException {
         Thread waitThread = new Thread(new Wait(), "WaitThread");
