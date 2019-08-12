@@ -22,7 +22,7 @@ public class JoinCountDownLatchTest {
         });
         thread1.start();
         thread2.start();
-        //join用于让当前线程等待join线程执行结束。原理就是不停的检查线程是否存活。
+        //join用于让当前线程等待join线程执行结束。原理就是不停的检查线程是否存活。也可以加入超时时间
         thread1.join();
         thread2.join();
         System.out.println("all thread finish");
