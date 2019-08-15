@@ -2,6 +2,7 @@ package com.kykj.demo.jdkproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * 定义一个处理器
@@ -26,15 +27,20 @@ public class MyInvocationHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("调用代理类");
-        if (method.getName().equals("sellBook")) {
-            int invoke = (int) method.invoke(realSubject, args);
-            System.out.println("调用的是卖书的方法");
-            return invoke;
-        } else {
-            String invoke = (String) method.invoke(realSubject, args);
-            System.out.println("调用的是说话的方法");
-            return invoke;
-        }
+        before();
+        Object invoke = method.invoke(realSubject, args);
+        after();
+        return invoke;
     }
+
+    // 调用invoke方法之前执行
+    private void before() {
+        System.out.println(String.format("log start time [%s] ", new Date()));
+    }
+
+    // 调用invoke方法之后执行
+    private void after() {
+        System.out.println(String.format("log end time [%s] ", new Date()));
+    }
+
 }
