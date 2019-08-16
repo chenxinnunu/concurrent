@@ -19,7 +19,7 @@ public class ConnectionPool {
     public ConnectionPool(int initialSize) {
         if (initialSize > 0) {
             for (int i = 0; i < initialSize; i++) {
-                // pool.addLast(Connection);
+                pool.addLast(ConnectionDriver.creatConnection());
             }
         }
     }
@@ -38,7 +38,7 @@ public class ConnectionPool {
     //调用方需要先调用这个方法，指定在多少毫秒内获取连接会超时
     public Connection fetchConnection(long mills) throws InterruptedException {
         synchronized (pool) {
-            //完全超时
+            //完全超时，就是没有超时时间，获取不到连接的线程会一直等待。
             if (mills <= 0) {
                 while (pool.isEmpty()) {
                     pool.wait();
