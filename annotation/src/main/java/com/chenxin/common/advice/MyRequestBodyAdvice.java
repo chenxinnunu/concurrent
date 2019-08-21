@@ -93,7 +93,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 				return SignUtils.checkSign(dataModel.getData(), dataModel.getSign());
 			} else {
 				log.info("请求参数为空");
-				throw new BaseException("参数为空");
+				throw new RuntimeException("参数为空");
 			}
 		}
 	}

@@ -43,7 +43,7 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
 		if (encode) {
 			if (StringUtils.isNoneBlank(data)) {
 				log.info("对方法method :【" + methodParameter.getMethod().getName() + "】返回数据进行加密");
-				dataModel = SignUtils.addSign(dataModel.getData());
+				dataModel = SignUtils.addSign(data);
 			}
 		}
 		return dataModel;

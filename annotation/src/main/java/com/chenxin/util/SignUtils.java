@@ -58,7 +58,7 @@ public class SignUtils {
 			request = RSAUtils.decryptData(data, ZN_PRIVATE_KEY, RSAUtils.RSA);
 		} else {
 			log.info("验签失败");
-			throw new BaseException("验签未通过");
+			throw new RuntimeException("验签未通过");
 		}
 		return request;
 	}
