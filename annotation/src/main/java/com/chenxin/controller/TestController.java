@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author chenxin
  * @date 2019/08/20
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 	@PostMapping("annotation")
 	@SecurityParameter
-	public DataModel getCode(@RequestBody TestModel testModel) {
+	public DataModel getCode(@RequestBody @Valid TestModel testModel) {
 		System.out.println(testModel);
 		DataModel dataModel = new DataModel();
 		dataModel.setData(JSON.toJSONString(testModel));

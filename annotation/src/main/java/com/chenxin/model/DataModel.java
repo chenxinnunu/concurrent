@@ -20,4 +20,14 @@ public class DataModel implements Serializable {
 	public String sign;
 	//文件内容	 	文件下载时使用
 	private String file;
+
+	public DataModel() {
+		this.code = "000000";
+		this.msg = "请求成功";
+	}
+
+	public DataModel(String code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
 }

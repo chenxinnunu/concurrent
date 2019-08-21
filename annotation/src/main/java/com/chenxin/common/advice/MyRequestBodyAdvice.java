@@ -2,6 +2,7 @@ package com.chenxin.common.advice;
 
 import com.alibaba.fastjson.JSONObject;
 import com.chenxin.common.annotation.SecurityParameter;
+import com.chenxin.exception.BaseException;
 import com.chenxin.model.DataModel;
 import com.chenxin.util.SignUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -55,9 +56,8 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 				return inputMessage;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			log.error("对方法method :【" + methodParameter.getMethod().getName() + "】返回数据进行解密出现异常：" + e.getMessage());
-			return inputMessage;
+			throw new BaseException(e.getMessage());
 		}
 	}
 
@@ -91,8 +91,10 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 			if (StringUtils.isNotBlank(request)) {
 				DataModel dataModel = JSONObject.parseObject(request, DataModel.class);
 				return SignUtils.checkSign(dataModel.getData(), dataModel.getSign());
+			} else {
+				log.info("请求参数为空");
+				throw new BaseException("参数为空");
 			}
-			return "";
 		}
 	}
 }

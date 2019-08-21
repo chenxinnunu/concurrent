@@ -1,12 +1,11 @@
 package com.chenxin.common.advice;
 
-import com.alibaba.fastjson.JSON;
 import com.chenxin.common.annotation.SecurityParameter;
+import com.chenxin.exception.BaseException;
 import com.chenxin.model.DataModel;
-import com.chenxin.util.DESHelper;
 import com.chenxin.util.SignUtils;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -16,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
  * 返回数据加密
+ *
  * @author chenxin
  * @date 2019/08/20
  */
@@ -39,12 +39,13 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
 			encode = serializedField.outEncode();
 		}
 		DataModel dataModel = (DataModel) body;
-		dataModel.setCode("200");
-		dataModel.setMsg("成功");
+		String data = dataModel.getData();
 		if (encode) {
-			log.info("对方法method :【" + methodParameter.getMethod().getName() + "】返回数据进行加密");
+			if (StringUtils.isNoneBlank(data)) {
+				log.info("对方法method :【" + methodParameter.getMethod().getName() + "】返回数据进行加密");
 				dataModel = SignUtils.addSign(dataModel.getData());
 			}
+		}
 		return dataModel;
 	}
 }
