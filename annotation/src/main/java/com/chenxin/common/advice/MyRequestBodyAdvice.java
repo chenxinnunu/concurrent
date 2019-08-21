@@ -41,7 +41,6 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 
 	@Override
 	public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter methodParameter, Type type, Class<? extends HttpMessageConverter<?>> aClass) throws IOException {
-		try {
 			boolean encode = false;
 			if (methodParameter.getMethod().isAnnotationPresent(SecurityParameter.class)) {
 				//获取注解配置的包含和去除字段
@@ -55,10 +54,6 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 			} else {
 				return inputMessage;
 			}
-		} catch (Exception e) {
-			log.error("对方法method :【" + methodParameter.getMethod().getName() + "】返回数据进行解密出现异常：" + e.getMessage());
-			throw new BaseException(e.getMessage());
-		}
 	}
 
 	@Override
@@ -71,7 +66,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 
 		private InputStream body;
 
-		MyHttpInputMessage(HttpInputMessage inputMessage) throws Exception {
+		MyHttpInputMessage(HttpInputMessage inputMessage) throws IOException {
 			this.headers = inputMessage.getHeaders();
 			this.body = IOUtils.toInputStream(easpString(IOUtils.toString(inputMessage.getBody(), "UTF-8")));
 		}
@@ -93,7 +88,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 				return SignUtils.checkSign(dataModel.getData(), dataModel.getSign());
 			} else {
 				log.info("请求参数为空");
-				throw new RuntimeException("参数为空");
+				throw new BaseException("100002", "参数为空");
 			}
 		}
 	}

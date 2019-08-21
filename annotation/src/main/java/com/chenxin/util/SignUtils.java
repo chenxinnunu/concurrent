@@ -1,9 +1,7 @@
 package com.chenxin.util;
 
-import com.alibaba.fastjson.JSON;
 import com.chenxin.exception.BaseException;
 import com.chenxin.model.DataModel;
-import com.chenxin.model.TestModel;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -13,9 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SignUtils {
 
-	private static final String MR_PUBLIC_KEY = "+wMue+/Rzu/yrHwMijTNmZSGU6jpHpfQ6UXg79wThllkpSDdJ+7mKq9Usvx5+mWBgx0AmowW2hRFDYt354StUVAwIDAQAB";
-	private static final String ZN_PRIVATE_KEY = "/U5lMutYUwaBSx18i643rhKoirGZy0en7HavZBAKtNsVqnjcjQ2phVqRj2dW1W5PKAH2thh+6yBW0nBgJdmXnenvzN3WR8ynhkSiyDSiLirBsqE4SZJOFYvXhlJowf6ZqMpj+uYq+8tqIL0eB09AgMBAAECgYARZCw/eRcJaw7RqQJTu2K9JvEmieteERvJcB3blOhN5gOA+5h3ePYfmX1bWhG71nJ0lxtO/BGNaoO0eeIck2pKSpp9IVbQ2PyoPlnQ+ZUtuEMMjuHfdvmbSYN/HfVvqfiOBlhYQxs5VkBKZbTm7H4r3WbvGSEEdla129R+qHP9cQJBANzLkLjJwlWdZ3mVrpdM5aPKcuie+ElzlUj5mSnCE6PQR7I/yEnevtQxzpIjso31VIbJVp4iGW7rOyPBVt591mMCQQCjJhnu/UuoEd+L8R2mJtJUsfRAQAPH14+hHbdckYB+/Xd0Nu8okX9NyLCjMScZkuOBLehKssu8bQHVPO6+CD/fAkAut9gAcZhwGyUo4dYWZ4vzk0OrGu/4Qr+kuEODRXB4afqxqbNMhhgkuAE4hNskFHP1LSbpwNdW0+kokKE75K53AkBrc12jLEnW0Ka1iUDovCrMw0NFyaNzzAH5sBOisOW7PX6eGMwcoO8CMMo9QNMqobaazrxt7iIG4JhTc8UdfVtrAkEAl0YIFBzfXR+bY/kLyD8IJWnAuG62RYr4lgTv5WZuNoVBcpXufl4wV/p7TRZW60xdjIvKvKDqXZAbG7zwjEQeIw==";
 	/**
+	 *
 	 * @param json
 	 * @return
 	 */
@@ -49,9 +46,9 @@ public class SignUtils {
 		String request = null;
 		if (flag) {
 			request = RSAUtils.decryptData(data, ZN_PRIVATE_KEY, RSAUtils.RSA);
-		} else {
+		}else {
 			log.info("验签失败");
-			throw new RuntimeException("验签未通过");
+			throw new BaseException("100003", "验签未通过");
 		}
 		return request;
 	}
